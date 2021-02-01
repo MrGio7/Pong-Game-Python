@@ -15,7 +15,7 @@ pad_a.speed(0)
 pad_a.penup()
 pad_a.shape("square")
 pad_a.color("white")
-pad_a.setx(350)
+pad_a.goto(350, 0)
 pad_a.shapesize(stretch_len=1, stretch_wid=5)
 
 #Pad b
@@ -24,7 +24,7 @@ pad_b.speed(0)
 pad_b.penup()
 pad_b.shape("square")
 pad_b.color("white")
-pad_b.setx(-350)
+pad_b.goto(-350, 0)
 pad_b.shapesize(stretch_len=1, stretch_wid=5)
 
 #Ball
@@ -85,9 +85,19 @@ while True:
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
 
-    if ball.xcor() >= 335 or ball.xcor() <= -335:
+    if ball.xcor() >= 330 and ball.xcor() < 350 and ball.ycor() >= pad_a.ycor() - 30 and ball.ycor() <= pad_a.ycor() + 30:
+        ball.setx(330)
         ball.dx *= -1
+    elif ball.xcor() <= -330 and ball.xcor() > -350 and ball.ycor() >= pad_b.ycor() - 30 and ball.ycor() <= pad_b.ycor() + 30:
+        ball.setx(-330)
+        ball.dx *= -1
+    elif ball.xcor() > 400 or ball.xcor() < -400:
+        ball.goto(0, 0)
 
-    if ball.ycor() >= 280 or ball.ycor() <= -280:
+    if ball.ycor() >= 290:
+        ball.sety(290)
+        ball.dy *= -1
+    elif ball.ycor() <= -280:
+        ball.sety(-280)
         ball.dy *= -1
 
