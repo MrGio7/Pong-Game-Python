@@ -9,6 +9,9 @@ wn.tracer(0)
 
 ##OBJECTS
 
+score_a = 0
+score_b = 0
+
 #Pad a
 pad_a = turtle.Turtle()
 pad_a.speed(0)
@@ -36,6 +39,16 @@ ball.color("white")
 ball.goto(0, 0)
 ball.dx = 0.1
 ball.dy = 0.1
+
+##SCORE BOARD
+pen = turtle.Turtle()
+pen.speed(0)
+pen.shape("square")
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "normal"))
 
 ##FUNCTIONS
 def pad_a_up():
@@ -91,8 +104,16 @@ while True:
     elif ball.xcor() <= -330 and ball.xcor() > -350 and ball.ycor() >= pad_b.ycor() - 30 and ball.ycor() <= pad_b.ycor() + 30:
         ball.setx(-330)
         ball.dx *= -1
-    elif ball.xcor() > 400 or ball.xcor() < -400:
+    elif ball.xcor() > 400:
+        score_a += 1
         ball.goto(0, 0)
+        pen.clear()
+        pen.write(f"Player A: {score_a}  Player B: {score_b}", align="center", font=("Courier", 24, "normal"))
+    elif ball.xcor() < -400:
+        score_b += 1
+        ball.goto(0, 0)
+        pen.clear()
+        pen.write(f"Player A: {score_a}  Player B: {score_b}", align="center", font=("Courier", 24, "normal"))
 
     if ball.ycor() >= 290:
         ball.sety(290)
