@@ -27,5 +27,12 @@ pad_b.color("white")
 pad_b.setx(-350)
 pad_b.shapesize(stretch_len=1, stretch_wid=5)
 
+#Ball
+ball = turtle.Turtle()
+ball.speed(0)
+ball.penup()
+ball.shape("square")
+ball.color("white")
+
 while True:
     wn.update()
