@@ -33,6 +33,9 @@ ball.speed(0)
 ball.penup()
 ball.shape("square")
 ball.color("white")
+ball.goto(0, 0)
+ball.dx = 0.1
+ball.dy = 0.1
 
 ##FUNCTIONS
 def pad_a_up():
@@ -74,8 +77,17 @@ wn.onkeypress(pad_a_down, "Down")
 wn.onkeypress(pad_b_up, "w")
 wn.onkeypress(pad_b_down, "s")
 
-##BORDERING
-
 
 while True:
     wn.update()
+
+##BALL MOVEMENT
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    if ball.xcor() >= 335 or ball.xcor() <= -335:
+        ball.dx *= -1
+
+    if ball.ycor() >= 280 or ball.ycor() <= -280:
+        ball.dy *= -1
+
