@@ -9,10 +9,23 @@ wn.tracer(0)
 
 #Objects
 
+#Pad a
+pad_a = turtle.Turtle()
+pad_a.speed(0)
+pad_a.penup()
+pad_a.shape("square")
+pad_a.color("white")
+pad_a.setx(350)
+pad_a.shapesize(stretch_len=1, stretch_wid=5)
 
-
-
-
+#Pad b
+pad_b = turtle.Turtle()
+pad_b.speed(0)
+pad_b.penup()
+pad_b.shape("square")
+pad_b.color("white")
+pad_b.setx(-350)
+pad_b.shapesize(stretch_len=1, stretch_wid=5)
 
 while True:
     wn.update()
